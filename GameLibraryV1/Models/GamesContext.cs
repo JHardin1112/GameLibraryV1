@@ -8,14 +8,11 @@ namespace GameLibraryV1.Models
     {
         public virtual DbSet<Games> Games { get; set; }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-        //    optionsBuilder.UseSqlServer(@"Server=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\jhardin\Documents\Visual Studio 2017\Projects\GameLibraryV1\GameLibraryV1\Games.mdf"";Integrated Security=True;Connect Timeout=30;");
-        //}
-        public GamesContext(DbContextOptions<GamesContext> options)
-            : base(options)
-        { }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+            optionsBuilder.UseSqlServer(@"Server=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\jhardin\Documents\Visual Studio 2017\Projects\GameLibraryV1\GameLibraryV1\Games.mdf"";Integrated Security=True;Connect Timeout=30;");
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
