@@ -35,6 +35,7 @@ namespace GameLibraryV1.Models
                 entity.Property(e => e.Type)
                     .HasColumnName("type")
                     .HasColumnType("varchar(10)");
+
             });
         }
     }
