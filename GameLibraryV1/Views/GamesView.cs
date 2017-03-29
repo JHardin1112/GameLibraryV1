@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace GameLibraryV1
 {
-    public partial class Form1 : Form
+    public partial class Games : Form
     {
-        public Form1()
+        public Games()
         {
             InitializeComponent();
         }
