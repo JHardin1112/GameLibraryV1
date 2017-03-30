@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameLibraryV1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,5 +15,18 @@ namespace GameLibraryV1.Views
         void Show_MyDiscGames();
         void Show_MyeShopGames();
         void SaveChanges();
+        void ClearGrid();
+        void AddGameToGrid(Game game);
+        void RemoveGameFromGrid(Game game);
+        void UpdateGridWithChangedGame(Game game);
+        int GetIdOfSelectedGameInGrid();
+        void SetSelectedGameInGrid(Game game);
+
+        int Id { get; set; }
+        string GameId { get; set; }
+        string type { get; set; }
+        string region { get; set; }
+        string name { get; set; }
+        bool owned { get; set; }
     }
 }

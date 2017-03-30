@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace GameLibraryV1.Models
 {
-    public partial class GamesContext : DbContext
+    public partial class GameContext : DbContext
     {
-        public virtual DbSet<Games> Games { get; set; }
+        public virtual DbSet<Game> Games { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -16,9 +16,11 @@ namespace GameLibraryV1.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Games>(entity =>
+            modelBuilder.Entity<Game>(entity =>
             {
-                entity.Property(e => e.Id).HasColumnType("varchar(8)");
+                entity.Property(e => e.Id).HasColumnType("int");
+
+                entity.Property(e => e.GameId).HasColumnType("varchar(8)");
 
                 entity.Property(e => e.Name)
                     .HasColumnName("name")

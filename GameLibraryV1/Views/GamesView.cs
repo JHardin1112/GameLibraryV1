@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameLibraryV1.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +12,9 @@ using System.Windows.Forms;
 
 namespace GameLibraryV1
 {
-    public partial class Games : Form
+    public partial class GamesView : Form, IGamesView
     {
-        public Games()
+        public GamesView()
         {
             InitializeComponent();
         }
@@ -25,7 +26,7 @@ namespace GameLibraryV1
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            using (var db = new GameLibraryV1.Models.GamesContext())
+            using (var db = new GameLibraryV1.Models.GameContext())
             {
 
                 foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -33,7 +34,7 @@ namespace GameLibraryV1
                     if ((bool)row.Cells["owned"].Value == true)
                     {
                         var game = db.Games
-                            .Where(g => g.Id == row.Cells["id"].Value.ToString()).FirstOrDefault();
+                            .Where(g => g.Id == (int)row.Cells["id"].Value).FirstOrDefault();
 
                         game.Owned = true;
 
@@ -66,7 +67,7 @@ namespace GameLibraryV1
 
         private void MyGames_Click(object sender, EventArgs e)
         {
-            using (var db = new GameLibraryV1.Models.GamesContext())
+            using (var db = new GameLibraryV1.Models.GameContext())
             {
                 var games = db.Games
                     .Where(g => g.Owned == true)
@@ -84,7 +85,7 @@ namespace GameLibraryV1
 
         private void ShowAll()
         {
-            using (var db = new GameLibraryV1.Models.GamesContext())
+            using (var db = new GameLibraryV1.Models.GameContext())
             {
                 var games = db.Games
                     .Where(g => g.Region == "NTSC-U")
