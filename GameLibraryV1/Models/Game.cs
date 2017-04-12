@@ -15,13 +15,5 @@ namespace GameLibraryV1.Models
         public string Name { get; set; }
         public bool Owned { get; set; }
 
-        public Game(string gameId, string type, string region, string name, bool owned)
-        {
-            GameId = gameId;
-            Type = type;
-            Region = region;
-            Name = name;
-            Owned = owned;
-        }
-    }
+          }
 }

@@ -9,11 +9,7 @@ namespace GameLibraryV1.Views
 {
     public interface IGamesView
     {
-        void SetController(Controllers.GamesController controller);
-        void Show_AllGames();
-        void Show_MyGames();
-        void Show_MyDiscGames();
-        void Show_MyeShopGames();
+
         void SaveChanges();
         void ClearGrid();
         void AddGameToGrid(Game game);
@@ -21,6 +17,14 @@ namespace GameLibraryV1.Views
         void UpdateGridWithChangedGame(Game game);
         int GetIdOfSelectedGameInGrid();
         void SetSelectedGameInGrid(Game game);
+        void LoadGrid(IList<Game> games);
+        void DisplaySelectedGameCover(string fileLocation);
+
+        event EventHandler ShowAll;
+        event EventHandler ShowMyGames;
+        event EventHandler ShowMyDiscGames;
+        event EventHandler ShowMyeShopGames;
+        event EventHandler DisplayCover;
 
         int Id { get; set; }
         string GameId { get; set; }
